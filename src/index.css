@@ -14,6 +14,42 @@ code {
 }
 /*-------*/
 
+/*Navbar*/
+.navbar .container {
+  justify-content: left;
+}
+
+.navbar img {
+  max-height: 75px;
+}
+/*------*/
+
+/*Hero*/
+.hero {
+  box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.267);
+}
+/*----*/
+
+/*Cards*/
+.card {
+  box-shadow: 5px 5px 10px grey;
+}
+
+.card-img-top:hover {
+  cursor: pointer;
+}
+
+.del-button {
+  /*background-color: rgb(117, 117, 117);*/
+  background-color: rgb(231, 54, 54);
+  color: white;
+  border: none;
+  font-size: larger;
+  font-weight: bolder;
+  width: 100%;
+}
+/*-----*/
+
 /*Image Viewer*/
 .disabled-img-viewer {
   display: none;
@@ -23,9 +59,14 @@ code {
   display: block;
 }
 
-/*TODO: make this work*/
-#img-viewer-container {
-  background-color: black;
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 95;
 }
 
 #img-viewer {
@@ -38,3 +79,9 @@ code {
   z-index: 100;
 }
 /*------------*/
+
+/*footer*/
+.footer {
+  box-shadow: 15px 20px 15px 15px;
+}
+/*------*/

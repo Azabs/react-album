@@ -3,7 +3,6 @@ import Card from "./card";
 
 class Album extends Component {
   state = {
-    //TODO: find a better way to load images to the cards array
     cards: [
       {
         title: "Card 1",
@@ -35,6 +34,21 @@ class Album extends Component {
         text: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         imgSrc: "./img/oldman.jpg",
       },
+      {
+        title: "Card 7",
+        text: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        imgSrc: "./img/sunset.jpg",
+      },
+      {
+        title: "Card 8",
+        text: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        imgSrc: "./img/bird.jpg",
+      },
+      {
+        title: "Card 9",
+        text: "Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        imgSrc: "./img/seagull.jpg",
+      },
     ],
     imgViewer: { className: "disabled-img-viewer", src: null },
   };
@@ -47,8 +61,12 @@ class Album extends Component {
   handleViewer = (imgSrc) => {
     let newViewer = this.state.imgViewer;
 
-    newViewer.className = "enabled-img-viewer";
-    newViewer.src = imgSrc;
+    if (imgSrc) {
+      newViewer.className = "enabled-img-viewer";
+      newViewer.src = imgSrc;
+    } else {
+      newViewer.className = "disabled-img-viewer";
+    }
 
     this.setState({ imgViewer: newViewer });
   };
@@ -56,10 +74,8 @@ class Album extends Component {
   render() {
     return (
       <div className="album container">
-        <div
-          id="img-viewer-container"
-          className={this.state.imgViewer.className}
-        >
+        <div className={this.state.imgViewer.className}>
+          <div className="overlay" onClick={() => this.handleViewer(null)} />
           <img
             id="img-viewer"
             src={this.state.imgViewer.src}
