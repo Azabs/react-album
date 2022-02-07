@@ -36,27 +36,44 @@ class Album extends Component {
         imgSrc: "./img/oldman.jpg",
       },
     ],
+    imgViewer: { className: "disabled-img-viewer", src: null },
   };
 
-  //TODO: Implement this method
-  handleDelete = () => {
-    console.log("delete handler called");
+  handleDelete = (card) => {
+    const cards = this.state.cards.filter((c) => c !== card);
+    this.setState({ cards });
   };
 
-  handleExpand = () => {
-    console.log("expand handler called");
+  handleViewer = (imgSrc) => {
+    let newViewer = this.state.imgViewer;
+
+    newViewer.className = "enabled-img-viewer";
+    newViewer.src = imgSrc;
+
+    this.setState({ imgViewer: newViewer });
   };
 
   render() {
     return (
       <div className="album container">
+        <div
+          id="img-viewer-container"
+          className={this.state.imgViewer.className}
+        >
+          <img
+            id="img-viewer"
+            src={this.state.imgViewer.src}
+            alt="Image Viewer"
+          />
+        </div>
+
         <div className="row">
           {this.state.cards.map((c) => (
             <Card
               key={c.title}
               card={c}
               onDelete={this.handleDelete}
-              onExpand={this.handleExpand}
+              onViewer={this.handleViewer}
             />
           ))}
         </div>

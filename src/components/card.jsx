@@ -5,7 +5,7 @@ const Card = (props) => {
       <div className="card my-2">
         <img
           className="card-img-top"
-          onClick={props.onExpand}
+          onClick={() => props.onViewer(props.card.imgSrc)}
           src={props.card.imgSrc}
           alt={props.card.title}
         />
@@ -13,7 +13,10 @@ const Card = (props) => {
           <h5 className="card-title">{props.card.title}</h5>
           <p className="card-text">{props.card.text}</p>
         </div>
-        <button className="btn btn-sm my-2" onClick={props.onDelete}>
+        <button
+          className="btn btn-sm my-2"
+          onClick={() => props.onDelete(props.card)}
+        >
           X
         </button>
       </div>
